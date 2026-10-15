@@ -49,8 +49,8 @@ vercel --prod   # publishes the production link
 
 ## After the first deploy
 
-1. Copy your production link, for example `https://praveena-portfolio.vercel.app`.
-2. If your link is different, open `index.html` and use Find and Replace to change every `https://praveena-portfolio.vercel.app` to your link. Then redeploy (push to GitHub, or run `vercel --prod` again).
+1. Copy your production link, for example `https://praveena-portfolio-two.vercel.app`.
+2. If your link is different, open `index.html` and use Find and Replace to change every `https://praveena-portfolio-two.vercel.app` to your link. Then redeploy (push to GitHub, or run `vercel --prod` again).
 3. Check the share preview by pasting your link into LinkedIn Post Inspector (linkedin.com/post-inspector).
 4. Add the link to your resume header, your LinkedIn profile's website field and your GitHub profile.
 
