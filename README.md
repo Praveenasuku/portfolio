@@ -60,14 +60,30 @@ All the text lives in `index.html`. Search for these to find each section:
 
 | Section | Search for |
 | --- | --- |
-| Hero (name, intro, buttons) | `class="hero"` |
-| Projects | `class="proj"` |
+| Hero (particle name, intro, buttons) | `class="hero"` |
+| Projects and the system map | `id="systems"` |
 | How I build AI systems | `id="approach"` |
-| Skills rack | `class="rack"` |
-| Experience | `class="jobs"` |
+| Ask my resume console | `id="ask"` |
+| Experience timeline | `class="role` |
+| Skills | `class="tier` |
 | Education and certifications | `id="education"` |
 | Contact | `id="contact"` |
 
 - **The "Ask my resume" console** answers from the `CHUNKS` list in the script near the bottom of `index.html`. When your resume changes, update the matching chunk text too, or the console will answer with old facts.
 - **New resume PDF:** replace `Praveena_S_Resume.pdf` with a new file of the same name.
-- **Adding a job:** copy one `<article class="job">` block, paste it at the top of the list and edit it. Then add a matching entry to `CHUNKS` so the console knows about it.
+- **Adding a job:** copy one `<li class="role">` block, paste it at the top of the list and edit it. Then add a matching entry to `CHUNKS` so the console knows about it.
+
+## Changing the colours
+
+The whole colour scheme is the `:root` block at the top of the `<style>` tag. The current theme is warm black with orange, amber and red.
+
+| Token | Used for |
+| --- | --- |
+| `--bg-c`, `--s1-c` | Page background and panels |
+| `--text-c` | Main text and the particle name |
+| `--accent-c` | AI steps, highlights and links on hover (orange) |
+| `--service-c` | Services, company names and the name's amber tint |
+| `--guard-c` | Guardrails, human checks and the status dot (red) |
+| `--glow-c` | The soft glow behind the hero, map and contact section |
+
+Values ending in `-c` are three numbers (red green blue, for example `255 122 26`), not hex codes, so every tint on the page and the hero particles follow them automatically. If you change the background, also update `theme-color` in the `<head>` and `favicon.svg`.
