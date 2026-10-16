@@ -90,6 +90,7 @@ Values ending in `-c` are three numbers (red green blue, for example `255 122 26
 
 ## Motion
 
+- **3D embedding galaxy:** a WebGL cloud of glowing points, grouped into topic clusters like vectors in a vector database, sits behind the whole page (`Galaxy` in the script, `<canvas id="galaxy">`). The mouse tilts it and lights up nearby points like a search query, a click sends a ripple, and a random cluster flashes every few seconds. Scrolling morphs it: galaxy (hero), knowledge sphere (systems), index lattice (ask my resume), double helix (experience), ring (contact). Phones get fewer points and a dimmer cloud behind text; browsers without WebGL simply skip it.
 - **On load:** the name assembles from particles, then the header drops in and the intro and buttons rise.
 - **On scroll:** section headings swipe up word by word, and content slides in (`REVEALS` list in the script sets what moves and how). A two-row stack marquee runs under the hero.
 - **On hover (mouse and trackpad):** an orange glow follows the cursor, buttons pull toward the pointer, and skill tags lift.
