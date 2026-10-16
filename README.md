@@ -87,3 +87,11 @@ The whole colour scheme is the `:root` block at the top of the `<style>` tag. Th
 | `--glow-c` | The soft glow behind the hero, map and contact section |
 
 Values ending in `-c` are three numbers (red green blue, for example `255 122 26`), not hex codes, so every tint on the page and the hero particles follow them automatically. If you change the background, also update `theme-color` in the `<head>` and `favicon.svg`.
+
+## Motion
+
+- **On load:** the name assembles from particles, then the header drops in and the intro and buttons rise.
+- **On scroll:** section headings swipe up word by word, and content slides in (`REVEALS` list in the script sets what moves and how). A two-row stack marquee runs under the hero.
+- **On hover (mouse and trackpad):** an orange glow follows the cursor, buttons pull toward the pointer, and skill tags lift.
+- **On phones:** the system map nudges sideways once to show it can be swiped.
+- Visitors who turn on "reduce motion" in their device settings get the same page with no animation.

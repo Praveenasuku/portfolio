@@ -25,6 +25,7 @@
 <meta name="twitter:description" content="RAG assistants, LangGraph agents and MCP servers for data centre operations.">
 <meta name="twitter:image" content="https://praveena-portfolio-two.vercel.app/og-image.png">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Person", "name": "Praveena S", "jobTitle": "Generative AI Engineer", "worksFor": {"@type": "Organization", "name": "Pumo Technovation India Pvt Ltd"}, "address": {"@type": "PostalAddress", "addressLocality": "Coimbatore", "addressRegion": "Tamil Nadu", "addressCountry": "IN"}, "email": "mailto:praveenasuku3@gmail.com", "url": "https://praveena-portfolio-two.vercel.app/", "sameAs": ["https://www.linkedin.com/in/praveena-suku/", "https://github.com/Praveenasuku"], "knowsAbout": ["Generative AI", "Large Language Models", "Retrieval-Augmented Generation", "AI Agents", "LangChain", "LangGraph", "Model Context Protocol", "Python"]}</script>
+<script>(function(d){d.classList.remove("no-js");d.classList.add("js");if(!(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches)&&"IntersectionObserver" in window)d.classList.add("motion");})(document.documentElement);</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anybody:wdth,wght@50..150,100..900&family=Hanken+Grotesk:wght@400;500;600;700&display=swap">
@@ -222,9 +223,25 @@ button{font:inherit}
 .earlier p.d{margin-top:10px;color:var(--muted);max-width:52ch}
 @media (max-width:760px){.earlier{grid-template-columns:1fr}}
 
+/* ---------- Stack marquee ---------- */
+.marquee{position:relative;overflow:hidden;border-block:1px solid var(--line);padding-block:clamp(18px,2.4vw,30px);background:var(--bg-2);
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent)}
+.mq-row{display:flex;width:max-content;animation:mq 46s linear infinite}
+.mq-row+.mq-row{margin-top:clamp(6px,1vw,12px);animation-duration:58s;animation-direction:reverse}
+.mq-row ul{display:flex;align-items:center;flex:none}
+.mq-row li{display:flex;align-items:center;font:800 clamp(26px,3.6vw,52px)/1.15 var(--f-disp);font-stretch:112.5%;letter-spacing:-.01em;white-space:nowrap}
+.mq-row li::after{content:"";flex:none;width:.26em;height:.26em;margin-inline:.6em;border-radius:50%;background:var(--accent)}
+.mq-row.outline li{color:transparent;-webkit-text-stroke:1.2px var(--muted)}
+.mq-row.outline li::after{background:var(--service)}
+.marquee:hover .mq-row{animation-play-state:paused}
+@keyframes mq{to{transform:translateX(-50%)}}
+
 /* ---------- Approach ---------- */
 .princ{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:28px}
-.princ li{padding-top:18px;border-top:2px solid var(--c,var(--service))}
+.princ li{position:relative;padding-top:18px;transition:transform .35s cubic-bezier(.2,.7,.2,1)}
+.princ li::before{content:"";position:absolute;left:0;right:0;top:0;height:2px;border-radius:2px;background:var(--c,var(--service));transform-origin:0 50%;transition:transform 1.1s cubic-bezier(.2,.7,.2,1) calc(var(--d,0s) + .2s)}
+.princ li:hover{transform:translateY(-4px)}
+.motion .princ li.rv:not(.in)::before{transform:scaleX(0)}
 .princ h3{font:800 21px/1.15 var(--f-disp);font-stretch:112.5%}
 .princ p{margin-top:10px;color:var(--muted);font-size:16px}
 @media (max-width:980px){.princ{grid-template-columns:repeat(2,minmax(0,1fr))}}
@@ -320,7 +337,8 @@ button{font:inherit}
 .contact h2{font:900 clamp(42px,7.4vw,108px)/.95 var(--f-disp);font-stretch:112.5%;letter-spacing:-.02em;max-width:13ch;text-wrap:balance}
 .contact .sub{margin-top:22px;color:var(--muted);font-size:clamp(17px,1.5vw,20px);max-width:48ch}
 .mailrow{margin-top:40px;display:flex;flex-wrap:wrap;align-items:center;gap:14px 20px}
-.mail{font:800 clamp(24px,3.6vw,46px)/1.1 var(--f-disp);font-stretch:100%;text-decoration:none;border-bottom:3px solid var(--accent);padding-bottom:4px;overflow-wrap:anywhere;transition:color .2s}
+.mail{font:800 clamp(24px,3.6vw,46px)/1.1 var(--f-disp);font-stretch:100%;text-decoration:none;background:linear-gradient(var(--accent),var(--accent)) 0 100%/100% 3px no-repeat;padding-bottom:7px;overflow-wrap:anywhere;transition:color .2s,background-size 1.1s cubic-bezier(.2,.7,.2,1) .35s}
+.motion .mailrow.rv:not(.in) .mail{background-size:0 3px}
 .mail:hover{color:var(--accent)}
 @media (max-width:520px){.mail{font-stretch:75%;font-size:clamp(21px,6.6vw,30px);overflow-wrap:normal}}
 .lines{margin-top:56px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px;padding-top:28px;border-top:1px solid var(--line)}
@@ -335,7 +353,37 @@ footer{border-top:1px solid var(--line);padding-block:24px calc(24px + env(safe-
 .toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translate(-50%,12px);opacity:0;z-index:50;padding:12px 20px;border-radius:999px;background:var(--text);color:var(--bg);font-weight:600;transition:opacity .25s,transform .25s;pointer-events:none}
 .toast.show{opacity:1;transform:translate(-50%,0)}
 
+/* ---------- Motion: load-in, scroll reveals, hover lifts ---------- */
+.sec,.contact{overflow-x:clip}
+@keyframes rise{from{opacity:0;transform:translateY(26px)}}
+@keyframes drop{from{opacity:0;transform:translateY(-18px)}}
+.motion .pill{animation:drop .8s cubic-bezier(.2,.7,.2,1) .15s both}
+.motion .hero-top{animation:rise .9s cubic-bezier(.2,.7,.2,1) .45s both}
+.motion .lede{animation:rise 1s cubic-bezier(.2,.7,.2,1) 1.1s both}
+.motion .cta{animation:rise 1s cubic-bezier(.2,.7,.2,1) 1.3s both}
+/* headings swipe up word by word from behind a mask */
+.w{display:inline-block;overflow:hidden;vertical-align:top;padding:0 .05em .14em;margin:0 -.05em -.14em}
+.wi{display:inline-block;transition:transform 1s cubic-bezier(.2,.75,.15,1) var(--d,0s)}
+.motion .split:not(.in) .wi{transform:translateY(112%)}
+/* content slides in; JS adds .rv-* and a stagger delay, then removes them once shown */
+.motion .rv{transition:opacity .8s cubic-bezier(.2,.7,.2,1) var(--d,0s),transform 1s cubic-bezier(.2,.7,.2,1) var(--d,0s)}
+.motion .rv:not(.in){opacity:0}
+.motion .rv-up:not(.in){transform:translateY(32px)}
+.motion .rv-left:not(.in){transform:translateX(-48px)}
+.motion .rv-right:not(.in){transform:translateX(48px)}
+.motion .rv-zoom:not(.in){transform:translateY(24px) scale(.94)}
+.motion .rv-pop:not(.in){transform:translateY(12px) scale(.86)}
+.stack li,.group li{transition:transform .25s,border-color .25s,color .25s,background-color .25s}
+.stack li:hover,.group li:hover{transform:translateY(-3px);border-color:var(--accent);color:var(--text)}
+.codelink svg{transition:transform .25s}
+.codelink:hover svg{transform:translateX(3px)}
+/* soft orange light that follows the cursor (mouse and trackpad only) */
+.cursor-glow{position:fixed;left:0;top:0;width:560px;height:560px;margin:-280px 0 0 -280px;border-radius:50%;pointer-events:none;z-index:2;opacity:0;
+  background:radial-gradient(closest-side,rgb(var(--glow-c) / .13),rgb(var(--glow-c) / .05) 55%,transparent);transition:opacity .5s;will-change:transform}
+.cursor-glow.on{opacity:1}
+
 @media (prefers-reduced-motion:reduce){
+  .mq-row{animation:none}
   html{scroll-behavior:auto}
   *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
   .pk{display:none}
@@ -394,6 +442,17 @@ footer{border-top:1px solid var(--line);padding-block:24px calc(24px + env(safe-
     </div>
   </div>
 </section>
+
+<div class="marquee" role="region" aria-label="Core stack">
+  <div class="mq-row">
+    <ul><li>RAG</li><li>LangChain</li><li>LangGraph</li><li>MCP</li><li>AI Agents</li><li>Hybrid Search</li><li>RAGAS</li><li>Langfuse</li></ul>
+    <ul aria-hidden="true"><li>RAG</li><li>LangChain</li><li>LangGraph</li><li>MCP</li><li>AI Agents</li><li>Hybrid Search</li><li>RAGAS</li><li>Langfuse</li></ul>
+  </div>
+  <div class="mq-row outline">
+    <ul><li>Python</li><li>FastAPI</li><li>Qdrant</li><li>Pinecone</li><li>ChromaDB</li><li>PostgreSQL</li><li>Docker</li><li>AWS</li><li>GPT-4</li><li>Gemini</li><li>Claude</li></ul>
+    <ul aria-hidden="true"><li>Python</li><li>FastAPI</li><li>Qdrant</li><li>Pinecone</li><li>ChromaDB</li><li>PostgreSQL</li><li>Docker</li><li>AWS</li><li>GPT-4</li><li>Gemini</li><li>Claude</li></ul>
+  </div>
+</div>
 
 <section class="sec" id="systems">
   <div class="wrap">
@@ -772,6 +831,7 @@ footer{border-top:1px solid var(--line);padding-block:24px calc(24px + env(safe-
 </footer>
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
+<div class="cursor-glow" aria-hidden="true"></div>
 
 <script>
 (function(){
@@ -1217,6 +1277,115 @@ function renderHits(r){
   }); });
 }
 form.addEventListener("submit",function(e){ e.preventDefault(); run(input.value); });
+
+/* =====================================================================
+   Motion: headings swipe up word by word, content slides in as it
+   scrolls into view, the phone map nudges sideways to show it swipes,
+   a cursor glow follows the mouse and buttons pull toward the pointer.
+   All of it is skipped when the visitor prefers reduced motion.
+   ===================================================================== */
+var MOTION=root.classList.contains("motion");
+
+function splitWords(el){
+  var text=el.textContent.replace(/\s+/g," ").trim(), words=text.split(" ");
+  el.textContent="";
+  var sr=document.createElement("span"); sr.className="sr"; sr.textContent=text; el.appendChild(sr);
+  words.forEach(function(w,i){
+    var o=document.createElement("span"); o.className="w"; o.setAttribute("aria-hidden","true");
+    var inner=document.createElement("span"); inner.className="wi"; inner.textContent=w;
+    inner.style.setProperty("--d",Math.min(i*0.07,0.7).toFixed(2)+"s");
+    o.appendChild(inner); el.appendChild(o);
+    if(i<words.length-1) el.appendChild(document.createTextNode(" "));
+  });
+  el.classList.add("split");
+}
+
+// [selector, how it enters, stagger between siblings in seconds]
+var REVEALS=[
+  [".sec-head p","up",0],
+  [".sys > *","up",0.06],
+  [".map","zoom",0],
+  [".earlier > *","up",0.1],
+  [".princ > li","left",0.12],
+  [".console","zoom",0],
+  [".role","right",0],
+  [".tier > header","left",0],
+  [".group h4","up",0],
+  [".group li","pop",0.03],
+  [".edu h3","up",0],
+  [".edu li","left",0.08],
+  [".contact .sub","up",0],
+  [".mailrow","up",0],
+  [".lines li","up",0.08]
+];
+var RV_KINDS=["rv","in","rv-up","rv-left","rv-right","rv-zoom","rv-pop"];
+
+if(MOTION){
+  var targets=[];
+  [].forEach.call(document.querySelectorAll(".sec-head h2,.contact h2"),function(h){ splitWords(h); targets.push(h); });
+  REVEALS.forEach(function(r){
+    var parents=[], counts=[];
+    [].forEach.call(document.querySelectorAll(r[0]),function(el){
+      var k=parents.indexOf(el.parentNode); if(k<0){ k=parents.push(el.parentNode)-1; counts[k]=0; }
+      var n=counts[k]++;
+      el.classList.add("rv","rv-"+r[1]);
+      el.style.setProperty("--d",Math.min(n*r[2],0.6).toFixed(2)+"s");
+      targets.push(el);
+    });
+  });
+  var rvIO=new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(!e.isIntersecting) return;
+      var el=e.target; rvIO.unobserve(el); el.classList.add("in");
+      if(el.classList.contains("rv")){
+        // once it has arrived, hand the element back to its normal styles and hover effects
+        var d=parseFloat(el.style.getPropertyValue("--d"))||0;
+        setTimeout(function(){ RV_KINDS.forEach(function(c){ el.classList.remove(c); }); el.style.removeProperty("--d"); },(d+1.5)*1000);
+      }
+    });
+  },{rootMargin:"0px 0px -8% 0px",threshold:0.1});
+  targets.forEach(function(el){ rvIO.observe(el); });
+
+  // phones: nudge the system map sideways once so visitors see it can be swiped
+  var ms=document.querySelector(".map-scroll");
+  if(ms){
+    var hintIO=new IntersectionObserver(function(es){
+      if(!es[0].isIntersecting) return; hintIO.disconnect();
+      var room=ms.scrollWidth-ms.clientWidth; if(room<40) return;
+      setTimeout(function(){
+        ms.scrollTo({left:Math.min(150,room),behavior:"smooth"});
+        setTimeout(function(){ ms.scrollTo({left:0,behavior:"smooth"}); },950);
+      },900);
+    },{threshold:0.6});
+    hintIO.observe(ms);
+  }
+
+  if(FINE){
+    // cursor glow, eased toward the pointer
+    var glow=document.querySelector(".cursor-glow"), gx=-999, gy=-999, tx=-999, ty=-999, graf=0;
+    function glowTick(){
+      gx+=(tx-gx)*0.14; gy+=(ty-gy)*0.14;
+      glow.style.transform="translate3d("+gx.toFixed(1)+"px,"+gy.toFixed(1)+"px,0)";
+      graf=(Math.abs(tx-gx)+Math.abs(ty-gy)>0.5)?requestAnimationFrame(glowTick):0;
+    }
+    document.addEventListener("pointermove",function(e){
+      if(e.pointerType!=="mouse") return;
+      if(gx<-900){ gx=e.clientX; gy=e.clientY; }
+      tx=e.clientX; ty=e.clientY; glow.classList.add("on");
+      if(!graf) graf=requestAnimationFrame(glowTick);
+    },{passive:true});
+    document.documentElement.addEventListener("pointerleave",function(){ glow.classList.remove("on"); });
+
+    // magnetic buttons
+    [].forEach.call(document.querySelectorAll(".btn"),function(b){
+      b.addEventListener("pointermove",function(e){
+        var r=b.getBoundingClientRect(), dx=e.clientX-(r.left+r.width/2), dy=e.clientY-(r.top+r.height/2);
+        b.style.transform="translate("+(dx*0.22).toFixed(1)+"px,"+(dy*0.32).toFixed(1)+"px)";
+      });
+      b.addEventListener("pointerleave",function(){ b.style.transform=""; });
+    });
+  }
+}
 
 /* =====================================================================
    Copy email
